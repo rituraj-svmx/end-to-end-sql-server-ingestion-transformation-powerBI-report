@@ -1,0 +1,28 @@
+{
+	"name": "onpremsqlserver_ls",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "localhost\\SQLEXPRESS",
+			"database": "AdventureWorks2017",
+			"encrypt": "mandatory",
+			"trustServerCertificate": true,
+			"authenticationType": "SQL",
+			"userName": "ritna",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault_ls",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "password"
+			}
+		},
+		"connectVia": {
+			"referenceName": "SHIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
