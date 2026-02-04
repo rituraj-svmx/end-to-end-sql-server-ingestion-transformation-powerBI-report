@@ -1,0 +1,19 @@
+{
+	"name": "goldTbles_ds",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapse-workspace-ranjan-WorkspaceDefaultStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Sales",
+				"fileSystem": "gold"
+			}
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

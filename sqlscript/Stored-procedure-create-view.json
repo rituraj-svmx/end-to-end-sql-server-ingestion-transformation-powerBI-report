@@ -1,0 +1,17 @@
+{
+	"name": "Stored-procedure-create-view",
+	"properties": {
+		"content": {
+			"query": "USE gold_db;\nGO\n\nCREATE OR ALTER PROC createSQLServerlessView_gold \n    @viewName NVARCHAR(100)\nAS\nBEGIN\n    DECLARE @statement NVARCHAR(MAX);\n\n    SET @statement = N'\n    CREATE OR ALTER VIEW ' + QUOTENAME(@viewName) + N' AS\n    SELECT *\n    FROM OPENROWSET(\n        BULK ''https://datalakestorageaccontrr.dfs.core.windows.net/gold/Sales/' + @viewName + N'/'',\n        FORMAT = ''DELTA''\n    ) AS [result];\n    ';\n\n    EXEC sp_executesql @statement;\nEND;\nGO\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "gold_db",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
